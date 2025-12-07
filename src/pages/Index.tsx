@@ -88,9 +88,54 @@ export default function Index() {
     script2.text = JSON.stringify(breadcrumbData);
     document.head.appendChild(script2);
 
+    const faqData = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое тендерное сопровождение по 44-ФЗ и 223-ФЗ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Тендерное сопровождение — это комплекс услуг по поддержке компаний при участии в государственных закупках по 44-ФЗ и 223-ФЗ. Включает поиск тендеров на ЕИС, подготовку документов, юридическое сопровождение, электронное актирование и помощь в обжаловании."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько стоит сопровождение тендеров в Санкт-Петербурге?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость начинается от 30 000 рублей за месяц + 1,5% от суммы выигранного контракта. Чем дольше срок сотрудничества, тем выгоднее тариф."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что включает электронное актирование работ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Электронное актирование включает подготовку актов выполненных работ (КС-2, КС-3), согласование с заказчиком, ведение электронного документооборота по государственному контракту."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как происходит обжалование действий заказчика?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При неправомерных действиях заказчика мы готовим жалобу в ФАС, собираем доказательную базу, представляем ваши интересы на заседаниях комиссии."
+          }
+        }
+      ]
+    };
+
+    const script3 = document.createElement('script');
+    script3.type = 'application/ld+json';
+    script3.text = JSON.stringify(faqData);
+    document.head.appendChild(script3);
+
     return () => {
       document.head.removeChild(script1);
       document.head.removeChild(script2);
+      document.head.removeChild(script3);
     };
   }, []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -230,10 +275,10 @@ export default function Index() {
                 Премиальное тендерное сопровождение
               </Badge>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Тендерное сопровождение в Санкт-Петербурге
+                Тендерное сопровождение госзакупок в Санкт-Петербурге под ключ
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed">
-                Комплексное сопровождение тендеров, электронное актирование, разработка технических заданий. Работаем на результат.
+                Профессиональное сопровождение тендеров 44-ФЗ и 223-ФЗ: от поиска закупки до подписания контракта. Электронное актирование работ, разработка технических заданий, юридическая поддержка. Работаем по всей России.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg shadow-xl shadow-orange-600/30" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -271,9 +316,9 @@ export default function Index() {
               <Icon name="Briefcase" className="w-4 h-4 mr-2" />
               Наши услуги
             </Badge>
-            <h2 className="text-4xl font-bold text-white mb-4">Услуги тендерного сопровождения</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Услуги по сопровождению госзакупок 44-ФЗ и 223-ФЗ</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              От поиска тендера до электронного актирования работ
+              Комплексное сопровождение тендеров: от поиска закупки на ЕИС до электронного актирования выполненных работ и подписания контракта
             </p>
           </div>
 
@@ -281,48 +326,56 @@ export default function Index() {
             {[
               {
                 icon: "Search",
-                title: "Поиск и анализ тендеров",
-                description: "Ежедневный мониторинг всех площадок электронных торгов и отбор перспективных закупок",
-                features: ["Мониторинг ЕИС", "Анализ конкурентов", "Оценка рентабельности"]
+                title: "Поиск и анализ тендеров по 44-ФЗ и 223-ФЗ",
+                description: "Ежедневный мониторинг площадок электронных торгов ЕИС, отбор перспективных государственных закупок",
+                features: ["Мониторинг ЕИС и площадок", "Анализ конкурентов", "Оценка рентабельности участия"],
+                link: "#contact"
               },
               {
                 icon: "FileEdit",
-                title: "Техническое задание",
-                description: "Разработка технических заданий и описаний объектов закупок любой сложности",
-                features: ["Составление ТЗ", "Описание ОЗ", "Техническая экспертиза"]
+                title: "Разработка технических заданий для тендеров",
+                description: "Подготовка технических заданий и описаний объектов закупок (ОЗ) любой сложности для участия в госзакупках",
+                features: ["Составление ТЗ по 44-ФЗ", "Описание ОЗ по 223-ФЗ", "Техническая экспертиза"],
+                link: "#contact"
               },
               {
                 icon: "FileText",
-                title: "Подготовка документов",
-                description: "Профессиональная подготовка полного пакета документов для участия в тендере",
-                features: ["Заявки на участие", "Коммерческие предложения", "Обеспечительные документы"]
+                title: "Подготовка документов для участия",
+                description: "Профессиональная подготовка полного пакета документов для участия в государственных тендерах",
+                features: ["Заявки на участие", "Коммерческие предложения", "Обеспечительные документы"],
+                link: "#contact"
               },
               {
                 icon: "FileCheck2",
-                title: "Электронное актирование",
-                description: "Полное сопровождение процесса электронного актирования выполненных работ",
-                features: ["Подготовка актов выполненных работ", "Согласование с заказчиком", "Документооборот"]
+                title: "Электронное актирование работ",
+                description: "Комплексное сопровождение электронного актирования выполненных работ по государственному контракту",
+                features: ["Подготовка актов КС-2, КС-3", "Согласование с заказчиком", "Электронный документооборот"],
+                link: "#contact"
               },
               {
                 icon: "Shield",
-                title: "Правовое сопровождение",
-                description: "Защита ваших интересов на всех этапах закупочной процедуры",
-                features: ["Юридические консультации", "Обжалование действий заказчика", "Претензионная работа", "Списание пеней (неустоек)"]
+                title: "Юридическое сопровождение тендеров",
+                description: "Правовая защита на всех этапах закупочной процедуры: от подачи заявки до обжалования",
+                features: ["Консультации по 44-ФЗ и 223-ФЗ", "Обжалование действий заказчика в ФАС", "Претензионная работа", "Списание неустоек и пеней"],
+                link: "#contact"
               },
               {
                 icon: "TrendingUp",
-                title: "Участие в торгах",
-                description: "Представление интересов в электронных аукционах и конкурсах",
-                features: ["Стратегия ценообразования", "Онлайн-сопровождение", "Работа с ценовыми предложениями"]
+                title: "Участие в электронных аукционах",
+                description: "Представление интересов в электронных аукционах на площадках ЕИС и конкурсах по госзакупкам",
+                features: ["Стратегия ценообразования", "Онлайн-сопровождение торгов", "Работа с ценовыми предложениями"],
+                link: "#contact"
               }
             ].map((service, index) => (
               <Card key={index} className="hover:shadow-2xl transition-all duration-300 border border-orange-600/30 hover:border-orange-500 group bg-gradient-to-br from-slate-900 to-slate-800 backdrop-blur-sm overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <CardContent className="p-8 relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-orange-600/50">
-                    <Icon name={service.icon} className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
+                  <a href={service.link} className="block">
+                    <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-orange-600/50">
+                      <Icon name={service.icon} className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
+                  </a>
                   <p className="text-slate-300 mb-6 leading-relaxed">{service.description}</p>
                   <ul className="space-y-3">
                     {service.features.map((feature, i) => (
@@ -348,9 +401,9 @@ export default function Index() {
               <Icon name="Star" className="w-4 h-4 mr-2" />
               Наши преимущества
             </Badge>
-            <h2 className="text-4xl font-bold text-white mb-4">Почему выбирают нас</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Преимущества работы с нашей компанией</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Профессионализм, опыт и индивидуальный подход к каждому клиенту
+              12+ лет опыта в госзакупках, юридическое сопровождение тендеров, помощь в обжаловании и индивидуальный подход к каждому клиенту
             </p>
           </div>
 
@@ -545,6 +598,55 @@ export default function Index() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <Badge className="bg-orange-500/20 text-orange-400 hover:bg-orange-500/30 border border-orange-500/30 mb-4">
+              <Icon name="HelpCircle" className="w-4 h-4 mr-2" />
+              Вопросы и ответы
+            </Badge>
+            <h2 className="text-4xl font-bold text-white mb-4">Часто задаваемые вопросы о тендерном сопровождении</h2>
+          </div>
+          
+          <div className="space-y-4">
+            {[
+              {
+                question: "Что такое тендерное сопровождение по 44-ФЗ и 223-ФЗ?",
+                answer: "Тендерное сопровождение — это комплекс услуг по поддержке компаний при участии в государственных закупках по 44-ФЗ и 223-ФЗ. Включает поиск тендеров на ЕИС, подготовку документов, юридическое сопровождение, электронное актирование и помощь в обжаловании."
+              },
+              {
+                question: "Сколько стоит сопровождение тендеров в Санкт-Петербурге?",
+                answer: "Стоимость начинается от 30 000 рублей за месяц + 1,5% от суммы выигранного контракта. Чем дольше срок сотрудничества, тем выгоднее тариф. Это дешевле, чем содержание штатного специалиста по тендерам."
+              },
+              {
+                question: "Что включает электронное актирование работ?",
+                answer: "Электронное актирование включает подготовку актов выполненных работ (КС-2, КС-3), согласование с заказчиком, ведение электронного документооборота по государственному контракту и сопровождение до полного закрытия объекта."
+              },
+              {
+                question: "Как происходит обжалование действий заказчика?",
+                answer: "При неправомерных действиях заказчика мы готовим жалобу в ФАС, собираем доказательную базу, представляем ваши интересы на заседаниях комиссии. Наши юристы специализируются на законах 44-ФЗ и 223-ФЗ."
+              },
+              {
+                question: "Работаете ли вы по всей России?",
+                answer: "Да, хотя наш офис находится в Санкт-Петербурге, мы работаем с клиентами по всей России. Все процедуры госзакупок проходят в электронном виде на площадках ЕИС."
+              },
+              {
+                question: "Как вы помогаете с техническими заданиями?",
+                answer: "Мы разрабатываем технические задания (ТЗ) и описания объектов закупок (ОЗ) любой сложности с учетом требований 44-ФЗ и 223-ФЗ, проводим техническую экспертизу и готовим всю необходимую документацию."
+              }
+            ].map((faq, index) => (
+              <Card key={index} className="border border-orange-600/30 bg-gradient-to-br from-slate-900 to-slate-800">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">{faq.question}</h3>
+                  <p className="text-slate-300 leading-relaxed">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Reviews Section */}
       <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
@@ -553,9 +655,9 @@ export default function Index() {
               <Icon name="MessageSquare" className="w-4 h-4 mr-2" />
               Отзывы клиентов
             </Badge>
-            <h2 className="text-4xl font-bold text-white mb-4">Что говорят о нас</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Отзывы о тендерном сопровождении</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Мнения наших клиентов — лучшая оценка нашей работы
+              Реальные отзывы клиентов о работе с нашей компанией в сфере госзакупок
             </p>
           </div>
 
