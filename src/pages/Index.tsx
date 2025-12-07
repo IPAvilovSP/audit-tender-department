@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 
 export default function Index() {
   useEffect(() => {
-    const structuredData = {
+    const organizationData = {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "ТендерМаркет",
@@ -27,16 +27,70 @@ export default function Index() {
         "@type": "AggregateRating",
         "ratingValue": "5",
         "reviewCount": "6"
-      }
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Тендерное сопровождение под ключ",
+          "description": "Полное сопровождение от поиска до заключения контракта",
+          "price": "150000",
+          "priceCurrency": "RUB"
+        },
+        {
+          "@type": "Offer",
+          "name": "Консультации по тендерам",
+          "description": "Разовые консультации по участию в госзакупках",
+          "price": "30000",
+          "priceCurrency": "RUB"
+        },
+        {
+          "@type": "Offer",
+          "name": "Разработка технических заданий",
+          "description": "Подготовка технической документации и спецификаций",
+          "price": "80000",
+          "priceCurrency": "RUB"
+        }
+      ]
     };
 
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(structuredData);
-    document.head.appendChild(script);
+    const script1 = document.createElement('script');
+    script1.type = 'application/ld+json';
+    script1.text = JSON.stringify(organizationData);
+    document.head.appendChild(script1);
+
+    const breadcrumbData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://audit-tender-department.poehali.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Услуги",
+          "item": "https://audit-tender-department.poehali.app/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Отзывы",
+          "item": "https://audit-tender-department.poehali.app/#reviews"
+        }
+      ]
+    };
+
+    const script2 = document.createElement('script');
+    script2.type = 'application/ld+json';
+    script2.text = JSON.stringify(breadcrumbData);
+    document.head.appendChild(script2);
 
     return () => {
-      document.head.removeChild(script);
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
     };
   }, []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
